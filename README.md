@@ -1,11 +1,11 @@
-**FFmpeg Teaser Slideshow Script**
+# FFmpeg Teaser Slideshow Script
 
 The FFmpeg Teaser Slideshow Script is a command-line tool designed to help digital artists create teaser slideshows for promoting their premium content.
 
-**Purpose:**
+## Purpose:
 The script aims to simplify the process of creating teaser slideshows for digital artists. By providing a set of configurable options.
 
-**Features:**
+## Features:
 - Folder Selection: Choose the folder containing your artwork.
 - Frame Rate Control: Set the desired frame rate for the output video.
 - Scaling Input: Adjust the scale of the output video.
@@ -15,16 +15,16 @@ The script aims to simplify the process of creating teaser slideshows for digita
 - Overlay Image: Automatically overlay an image (e.g., artist logo) on each frame of the slideshow.
 - Duration Calculation: Automatically calculate the duration of the slideshow based on the line count and frame rate.
 
-**Usage:**
+## Usage:
 1. Place the script in the folder containing your artwork.
 2. Run the .bat file
 4. Follow the on-screen instructions to select the folder, customize settings, and choose the output format.
 4. The script will generate the output video file with the specified settings.
 
-**Dependencies:**
+## Dependencies:
 - FFmpeg: Ensure FFmpeg is installed and added to the system's PATH environment variable.
 
-**Note:**
+## Note:
 - Make sure to have a transparent overlay image named "overlay.png" in the same folder as the script.
 
-Feel free to customize the description and documentation according to your needs
+*Feel free to customize the description and documentation according to your needs*
