@@ -45,8 +45,15 @@ REM Step 8: Get noise input
 set /p "noiseInput=Enter the noise input (default is 10): "
 if "%noiseInput%"=="" set "noiseInput=10"
 
-REM Step 9: Generate list.txt with JPG files
-PowerShell -Command "Get-ChildItem -Path '%selectedFolder%' -Recurse -Filter *.jpg | ForEach-Object { 'file ''{0}''' -f $_.FullName } | Out-File -Encoding UTF8 list.txt"
+REM Step 9: Generate list.txt with all image file types
+PowerShell -Command "Get-ChildItem -Path '%selectedFolder%' -Recurse -Filter *.png | ForEach-Object { 'file ''{0}''' -f $_.FullName } | Out-File -Encoding UTF8 list.txt"
+PowerShell -Command "Get-ChildItem -Path '%selectedFolder%' -Recurse -Filter *.jpg | ForEach-Object { 'file ''{0}''' -f $_.FullName } | Out-File -Encoding UTF8 -Append list.txt"
+PowerShell -Command "Get-ChildItem -Path '%selectedFolder%' -Recurse -Filter *.jpeg | ForEach-Object { 'file ''{0}''' -f $_.FullName } | Out-File -Encoding UTF8 -Append list.txt"
+PowerShell -Command "Get-ChildItem -Path '%selectedFolder%' -Recurse -Filter *.gif | ForEach-Object { 'file ''{0}''' -f $_.FullName } | Out-File -Encoding UTF8 -Append list.txt"
+PowerShell -Command "Get-ChildItem -Path '%selectedFolder%' -Recurse -Filter *.bmp | ForEach-Object { 'file ''{0}''' -f $_.FullName } | Out-File -Encoding UTF8 -Append list.txt"
+PowerShell -Command "Get-ChildItem -Path '%selectedFolder%' -Recurse -Filter *.tif | ForEach-Object { 'file ''{0}''' -f $_.FullName } | Out-File -Encoding UTF8 -Append list.txt"
+PowerShell -Command "Get-ChildItem -Path '%selectedFolder%' -Recurse -Filter *.tiff | ForEach-Object { 'file ''{0}''' -f $_.FullName } | Out-File -Encoding UTF8 -Append list.txt"
+PowerShell -Command "Get-ChildItem -Path '%selectedFolder%' -Recurse -Filter *.ico | ForEach-Object { 'file ''{0}''' -f $_.FullName } | Out-File -Encoding UTF8 -Append list.txt"
 
 REM Step 10: Convert list.txt from UTF-8 with BOM to UTF-8
 powershell -Command "$content = Get-Content -Encoding UTF8 list.txt; Set-Content -Path list.txt -Value $content"
@@ -59,10 +66,6 @@ set /a "duration=lineCount / frameRate"
 
 REM Step 13: Generate output.gif using ffmpeg with variables
 set "outputName=%outputName%.gif"
-ffmpeg -stream_loop -1 -f concat -safe 0 -i list.txt -loop 1 -i amirin.png -filter_complex "[0:v]scale=-1:%scaleInput%:force_original_aspect_ratio=decrease,pixelize=%pixelizeInput%:%pixelizeInput%,noise=alls=%noiseInput%:allf=t+u[bg];[1:v][bg]scale2ref=iw*2:ih*2[overlay][video];[video][overlay]overlay=(W-w)/2:(H-h)/2:enable='between(t,0,%duration%)':shortest=1" -c:v gif -r %frameRate% -t %duration% %outputName%
-
-REM Cleanup: Remove list.txt file
-del list.txt
-
+ffmpeg -stream_loop -1 -f concat -safe 0 -i list.txt -loop 1 -i overlay.png -filter_complex "[0:v]scale=-1:%scaleInput%:force_original_aspect_ratio=decrease,pixelize=%pixelizeInput%:%pixelizeInput%,noise=alls=%noiseInput%:allf=t+u[bg];[bg][1:v]overlay=(W-w)/2:(H-h)/2:enable='between(t,0,%duration%)':shortest=1" -c:v gif -r %frameRate% -t %duration% %outputName%
 echo Conversion completed!
 pause

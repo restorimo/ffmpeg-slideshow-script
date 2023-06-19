@@ -11,7 +11,7 @@ This script allows you to convert a folder of JPG images into an animated GIF us
 - Define the scale input for resizing the images (default is 1000 pixels).
 - Adjust the pixelize input for the level of pixelization (default is 15).
 - Control the noise input for adding noise effects (default is 10).
-- Supports overlaying an image on each frame (amirin.png included).
+- Supports overlaying an image on each frame.
 - Automatically calculates the duration based on the line count and frame rate.
 - Outputs the GIF in GIF format with the specified parameters.
 
