@@ -1,34 +1,30 @@
-# ffmpeg-slideshow-script
+**FFmpeg Teaser Slideshow Script**
 
-This script allows you to convert a folder of JPG images into an animated GIF using FFmpeg. It provides an interactive prompt to select the input folder, set various parameters, and generate the GIF with customization options.
+The FFmpeg Teaser Slideshow Script is a command-line tool designed to help digital artists create teaser slideshows for promoting their premium content.
 
-## Features
+**Purpose:**
+The script aims to simplify the process of creating teaser slideshows for digital artists. By providing a set of configurable options.
 
-- List folders with numbers for easy selection.
-- Choose the input folder containing the JPG images.
-- Set the frame rate for the GIF (default is 2 frames per second).
-- Specify the output name for the GIF (default is "output").
-- Define the scale input for resizing the images (default is 1000 pixels).
-- Adjust the pixelize input for the level of pixelization (default is 15).
-- Control the noise input for adding noise effects (default is 10).
-- Supports overlaying an image on each frame.
-- Automatically calculates the duration based on the line count and frame rate.
-- Outputs the GIF in GIF format with the specified parameters.
+**Features:**
+- Folder Selection: Choose the folder containing your artwork.
+- Frame Rate Control: Set the desired frame rate for the output video.
+- Scaling Input: Adjust the scale of the output video.
+- Pixelization Input: Apply pixelization effect censore to the artwork.
+- Noise Input: Add noise effect to the output video.
+- Output Format Selection: Choose from a list of supported output formats, including GIF, H264, H265, H264NVIDIA, H265NVIDIA, VP8, VP9, and AV1.
+- Overlay Image: Automatically overlay an image (e.g., artist logo) on each frame of the slideshow.
+- Duration Calculation: Automatically calculate the duration of the slideshow based on the line count and frame rate.
 
-## Usage
+**Usage:**
+1. Place the script in the folder containing your artwork.
+2. Run the .bat file
+4. Follow the on-screen instructions to select the folder, customize settings, and choose the output format.
+4. The script will generate the output video file with the specified settings.
 
-1. Run the script and follow the prompts.
-2. Select the folder number containing the JPG images.
-3. Enter the desired parameters or press Enter to use the default values.
-4. The script will generate the GIF using FFmpeg with the specified settings.
-5. Once the conversion is completed, the GIF file will be saved in the current directory.
+**Dependencies:**
+- FFmpeg: Ensure FFmpeg is installed and added to the system's PATH environment variable.
 
-## Requirements
+**Note:**
+- Make sure to have a transparent overlay image named "overlay.png" in the same folder as the script.
 
-- FFmpeg: Make sure FFmpeg is installed and accessible in the system's PATH.
-
-## Note
-
-- The script assumes that all the JPG images in the selected folder are part of the animation sequence.
-
-Feel free to modify and adapt the script according to your needs. Happy GIF converting!
+Feel free to customize the description and documentation according to your needs
